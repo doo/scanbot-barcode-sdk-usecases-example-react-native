@@ -1,31 +1,54 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import {StatusBar, StyleSheet, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {ScannersListScreen} from './ScannersListScreen';
+import {HomeScreen} from './HomeScreen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {ScanbotTheme} from './theme';
+import {PrimaryRoutesParamList, Screens} from './types';
+import {SingleBarcodeScanning} from './SingleBarcodeScanning';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-enum Screens {
-  ScannersList = 'ScannersList',
-}
-
-type PrimaryRoutesParamList = {
-  [Screens.ScannersList]: undefined;
+const ScreenTitles: Record<Screens, string> = {
+  [Screens.ScannersList]: 'Scanbot Barcode SDK Example',
+  [Screens.SingleBarcodeScanner]: 'Single Barcode Scanner',
 };
 
 const Stack = createNativeStackNavigator<PrimaryRoutesParamList>();
 
 function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{}}>
-          <Stack.Screen
-            name={Screens.ScannersList}
-            component={ScannersListScreen}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <View style={styles.container}>
+        <StatusBar
+          barStyle={'dark-content'}
+          backgroundColor={ScanbotTheme.colors.text}
+        />
+        <NavigationContainer theme={ScanbotTheme}>
+          <Stack.Navigator
+            screenOptions={{
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+              headerTintColor: Colors.white,
+            }}>
+            <Stack.Screen
+              name={Screens.ScannersList}
+              component={HomeScreen}
+              options={{
+                title: ScreenTitles.ScannersList,
+              }}
+            />
+            <Stack.Screen
+              name={Screens.SingleBarcodeScanner}
+              component={SingleBarcodeScanning}
+              options={{
+                title: ScreenTitles.SingleBarcodeScanner,
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </View>
+    </SafeAreaProvider>
   );
 }
 
