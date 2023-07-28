@@ -10,19 +10,28 @@ export function ResultsSection({results}: ResultsSectionProp) {
   return (
     <View style={styles.resultsContainer}>
       {results?.status === 'OK' && results.barcodes.length > 0 && (
-        <FlatList
-          style={styles.resultsList}
-          data={results.barcodes}
-          renderItem={({item}) => <Text>{item.text}</Text>}
-        />
+        <View>
+          <Text style={styles.title}>Results</Text>
+          <FlatList
+            style={styles.resultsList}
+            data={results.barcodes}
+            renderItem={({item}) => <Text>{item.text}</Text>}
+          />
+        </View>
       )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 32,
+    fontWeight: 'bold',
+  },
   resultsContainer: {
     flex: 4,
+    paddingHorizontal: 20,
+    paddingVertical: 12,
   },
   resultsList: {
     paddingVertical: 10,
