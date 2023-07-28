@@ -1,4 +1,5 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {LicenseStatus} from 'react-native-scanbot-barcode-scanner-sdk/src/enum';
 
 export enum Screens {
   ScannersList = 'ScannersList',
@@ -16,3 +17,9 @@ export type PrimaryRouteNavigationProp = NativeStackNavigationProp<
 >;
 
 export type ListDataItem = {screen: Screens; title: string};
+
+export type LicenceResult = {
+  isLicenseValid: boolean;
+  licenseStatus: LicenseStatus;
+  licenseStatusMessage: string;
+};

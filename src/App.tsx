@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StatusBar, StyleSheet, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {HomeScreen} from './HomeScreen';
@@ -8,6 +8,7 @@ import {ScanbotTheme} from './theme';
 import {PrimaryRoutesParamList, Screens} from './types';
 import {SingleBarcodeScanning} from './SingleBarcodeScanning';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
 
 const ScreenTitles: Record<Screens, string> = {
   [Screens.ScannersList]: 'Scanbot Barcode SDK Example',
@@ -17,12 +18,19 @@ const ScreenTitles: Record<Screens, string> = {
 const Stack = createNativeStackNavigator<PrimaryRoutesParamList>();
 
 function App() {
+  useEffect(() => {
+    ScanbotBarcodeSDK.initializeSdk({
+      licenseKey: '',
+      loggingEnabled: true,
+    });
+  }, []);
+
   return (
     <SafeAreaProvider>
       <View style={styles.container}>
         <StatusBar
           barStyle={'dark-content'}
-          backgroundColor={ScanbotTheme.colors.text}
+          backgroundColor={ScanbotTheme.colors.primary}
         />
         <NavigationContainer theme={ScanbotTheme}>
           <Stack.Navigator

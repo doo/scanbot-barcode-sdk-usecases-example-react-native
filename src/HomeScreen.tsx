@@ -1,6 +1,6 @@
 import React from 'react';
 import {FlatList, SafeAreaView, StyleSheet} from 'react-native';
-import {ListItem} from './components/ListItem';
+import {ListItem} from './components';
 import {ListDataItem, PrimaryRouteNavigationProp, Screens} from './types';
 import {useNavigation} from '@react-navigation/native';
 

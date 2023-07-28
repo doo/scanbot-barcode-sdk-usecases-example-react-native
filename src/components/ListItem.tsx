@@ -1,20 +1,27 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 import {ScanbotTheme} from '../theme';
 import React from 'react';
 
-export function ListItem({
-  onPress,
-  title,
-}: {
+interface ListItemProps {
   onPress: () => void;
   title: string;
-}) {
+  style?: ViewStyle;
+}
+
+export function ListItem({onPress, title, style}: ListItemProps) {
   return (
-    <TouchableOpacity onPress={onPress}>
-      <View style={styles.container}>
+    <Pressable onPress={onPress}>
+      <View style={[styles.container, style && style]}>
         <Text style={styles.text}>{title}</Text>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 }
 
