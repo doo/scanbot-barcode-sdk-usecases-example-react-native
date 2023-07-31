@@ -15,7 +15,15 @@ export function ResultsSection({results}: ResultsSectionProp) {
           <FlatList
             style={styles.resultsList}
             data={results.barcodes}
-            renderItem={({item}) => <Text>{item.text}</Text>}
+            renderItem={({item}) => {
+              const {type, textWithExtension} = item;
+              return (
+                <Text style={styles.barcodeType}>
+                  {type + ' '}
+                  <Text style={styles.barcodeText}>{textWithExtension}</Text>
+                </Text>
+              );
+            }}
           />
         </View>
       )}
@@ -37,5 +45,12 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     marginHorizontal: 20,
     marginVertical: 12,
+  },
+  barcodeType: {
+    fontWeight: 'bold',
+    marginVertical: 4,
+  },
+  barcodeText: {
+    fontWeight: 'normal',
   },
 });
