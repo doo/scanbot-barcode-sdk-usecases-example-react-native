@@ -16,3 +16,20 @@ export function licenceNotValidAlert() {
     },
   );
 }
+
+export function errorMessageAlert(message: string) {
+  Alert.alert(
+    'An unexpected error has occurred',
+    message,
+    [
+      {
+        text: 'Cancel',
+        style: 'cancel',
+        onPress: () => {},
+      },
+    ],
+    {
+      cancelable: true,
+    },
+  );
+}
