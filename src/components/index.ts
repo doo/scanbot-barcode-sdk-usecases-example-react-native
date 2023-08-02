@@ -1,4 +1,4 @@
-import {ErrorSection} from './ErrorSection';
-import {ListItem} from './ListItem';
+import {Button} from './Button';
+import {SupportSection} from './SupportSection';
 
-export {ErrorSection, ListItem};
+export {Button, SupportSection};
