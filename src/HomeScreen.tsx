@@ -11,16 +11,7 @@ import {
 import {SupportSection} from './components';
 import {ScanbotTheme} from './theme';
 import {useSingleBarcodeScanner} from './hooks/useSingleBarcodeScanner';
-
-type SectionData = {
-  title: string;
-  onPress: () => void;
-};
-
-type Section = {
-  title: string;
-  data: SectionData[];
-};
+import {Section, SectionData} from './types';
 
 export function HomeScreen() {
   const {onPress: onSingleBarcodeScanning} = useSingleBarcodeScanner();

@@ -18,8 +18,6 @@ export type PrimaryRouteNavigationProp = NativeStackNavigationProp<
   keyof PrimaryRoutesParamList
 >;
 
-export type ListDataItem = {screen: Screens; title: string};
-
 export type LicenceResult = {
   isLicenseValid: boolean;
   licenseStatus: LicenseStatus;
@@ -30,3 +28,13 @@ export type ResultScreenRouteProp = RouteProp<
   PrimaryRoutesParamList,
   Screens.Results
 >;
+
+export type SectionData = {
+  title: string;
+  onPress: () => void;
+};
+
+export type Section = {
+  title: string;
+  data: SectionData[];
+};
