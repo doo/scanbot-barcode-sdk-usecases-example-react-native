@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {
   Pressable,
   SafeAreaView,
@@ -11,10 +11,21 @@ import {
 import {SupportSection} from './components';
 import {ScanbotTheme} from './theme';
 import {useSingleBarcodeScanner} from './hooks/useSingleBarcodeScanner';
-import {Section, SectionData} from './types';
+import {
+  PrimaryRouteNavigationProp,
+  Screens,
+  Section,
+  SectionData,
+} from './types';
+import {useNavigation} from '@react-navigation/native';
 
 export function HomeScreen() {
   const {onPress: onSingleBarcodeScanning} = useSingleBarcodeScanner();
+  const navigation = useNavigation<PrimaryRouteNavigationProp>();
+
+  const onNativeComponentBarcodeScanning = useCallback(() => {
+    navigation.navigate(Screens.NativeComponentBarcode);
+  }, [navigation]);
 
   const sectionListData: Section[] = [
     {
@@ -23,6 +34,15 @@ export function HomeScreen() {
         {
           title: 'Single Barcode Scanning',
           onPress: onSingleBarcodeScanning,
+        },
+      ],
+    },
+    {
+      title: 'Native Components Barcode Scanning Use Cases',
+      data: [
+        {
+          title: 'Native Component Single Barcode Scanning',
+          onPress: onNativeComponentBarcodeScanning,
         },
       ],
     },
@@ -91,8 +111,10 @@ const styles = StyleSheet.create({
   },
   listItemText: {
     fontSize: 16,
+    flexShrink: 1,
   },
   listItemIcon: {
+    marginLeft: 4,
     fontSize: 16,
     color: ScanbotTheme.colors.primary,
     fontWeight: 'bold',

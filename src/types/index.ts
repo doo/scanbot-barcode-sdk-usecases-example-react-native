@@ -6,11 +6,13 @@ import {RouteProp} from '@react-navigation/native';
 export enum Screens {
   ScannersList = 'ScannersList',
   Results = 'Results',
+  NativeComponentBarcode = 'NativeComponentBarcode',
 }
 
 export type PrimaryRoutesParamList = {
   [Screens.ScannersList]: undefined;
   [Screens.Results]: BarcodeScannerResult | undefined;
+  [Screens.NativeComponentBarcode]: undefined;
 };
 
 export type PrimaryRouteNavigationProp = NativeStackNavigationProp<
