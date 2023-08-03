@@ -1,9 +1,9 @@
 import {Alert} from 'react-native';
 
-export function licenceNotValidAlert() {
+export function licenseNotValidAlert() {
   Alert.alert(
-    'Licence not valid',
-    'Your license is corrupted or expired, Scanbot features are disabled. Please restart the app in order to receive one minute valid licence.',
+    'License not valid',
+    'Your license is corrupted or expired, Scanbot features are disabled. Please restart the app in order to receive one minute valid license.',
     [
       {
         text: 'Cancel',
