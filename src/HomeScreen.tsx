@@ -12,7 +12,6 @@ import {SupportSection} from './components';
 import {ScanbotTheme} from './theme';
 import {useSingleBarcodeScanner} from './hooks/useSingleBarcodeScanner';
 import {
-  LicenceResult,
   PrimaryRouteNavigationProp,
   Screens,
   Section,
@@ -20,18 +19,18 @@ import {
 } from './types';
 import {useNavigation} from '@react-navigation/native';
 import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
-import {licenceNotValidAlert} from './utils/alerts';
+import {licenseNotValidAlert} from './utils/alerts';
 
 export function HomeScreen() {
   const {onPress: onSingleBarcodeScanning} = useSingleBarcodeScanner();
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
 
   const onNativeComponentBarcodeScanning = useCallback(async () => {
-    const licenceInfo: LicenceResult = await ScanbotBarcodeSDK.getLicenseInfo();
-    if (licenceInfo.isLicenseValid) {
+    const licenseInfo = await ScanbotBarcodeSDK.getLicenseInfo();
+    if (licenseInfo.isLicenseValid) {
       navigation.navigate(Screens.NativeComponentBarcode);
     } else {
-      licenceNotValidAlert();
+      licenseNotValidAlert();
     }
   }, [navigation]);
 
@@ -46,10 +45,10 @@ export function HomeScreen() {
       ],
     },
     {
-      title: 'Native Components Barcode Scanning Use Cases',
+      title: 'Native Components Use Cases',
       data: [
         {
-          title: 'Native Component Single Barcode Scanning',
+          title: 'Single Barcode Scanning',
           onPress: onNativeComponentBarcodeScanning,
         },
       ],
