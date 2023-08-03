@@ -13,7 +13,7 @@ export function SupportSection() {
       .catch(error => console.log(error));
   }, []);
 
-  const onGetTrialLicence = useCallback(() => {
+  const onGetTrialLicense = useCallback(() => {
     Linking.canOpenURL(trialUrl)
       .then(() => Linking.openURL(trialUrl))
       .catch(error => console.log(error));
@@ -27,8 +27,8 @@ export function SupportSection() {
         style={styles.button}
         text={'Contact support'}
       />
-      <Text onPress={onGetTrialLicence} style={styles.trialText}>
-        Get your trial licence now -&gt;
+      <Text onPress={onGetTrialLicense} style={styles.trialText}>
+        Get your trial license now -&gt;
       </Text>
     </View>
   );

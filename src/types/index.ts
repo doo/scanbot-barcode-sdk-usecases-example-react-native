@@ -20,7 +20,7 @@ export type PrimaryRouteNavigationProp = NativeStackNavigationProp<
   keyof PrimaryRoutesParamList
 >;
 
-export type LicenceResult = {
+export type LicenseResult = {
   isLicenseValid: boolean;
   licenseStatus: LicenseStatus;
   licenseStatusMessage: string;
