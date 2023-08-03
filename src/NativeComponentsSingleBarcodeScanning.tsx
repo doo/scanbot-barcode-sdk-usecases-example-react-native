@@ -21,7 +21,7 @@ export function NativeComponentsSingleBarcodeScanning() {
     <SafeAreaView style={styles.container}>
       <ScanbotBarcodeCameraView
         configuration={{
-          shouldUseFinderView: customOverlay,
+          shouldUseFinderView: !customOverlay,
           finderAspectRatio: {
             width: 1,
             height: 1,
@@ -48,7 +48,7 @@ export function NativeComponentsSingleBarcodeScanning() {
               text={'Custom overlay'}
             />
           </View>
-          {!customOverlay && <CustomOverlay />}
+          {customOverlay && <CustomOverlay />}
         </View>
       </ScanbotBarcodeCameraView>
     </SafeAreaView>
