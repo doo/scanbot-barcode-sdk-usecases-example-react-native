@@ -1,17 +1,12 @@
 import {SafeAreaView, StyleSheet, View} from 'react-native';
 import {ScanbotBarcodeCameraView} from 'react-native-scanbot-barcode-scanner-sdk';
-import React, {useCallback, useState} from 'react';
+import React, {useCallback} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {PrimaryRouteNavigationProp, Screens} from './types';
-import {Button, CustomOverlay} from './components';
+import {Button} from './components';
 
 export function NativeComponentsSingleBarcodeScanning() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
-  const [customOverlay, setCustomOverlay] = useState(false);
-
-  const onSwitchOverlay = useCallback(() => {
-    setCustomOverlay(!customOverlay);
-  }, [customOverlay]);
 
   const onCancel = useCallback(() => {
     navigation.pop();
@@ -21,7 +16,7 @@ export function NativeComponentsSingleBarcodeScanning() {
     <SafeAreaView style={styles.container}>
       <ScanbotBarcodeCameraView
         configuration={{
-          shouldUseFinderView: !customOverlay,
+          shouldUseFinderView: true,
           finderAspectRatio: {
             width: 1,
             height: 1,
@@ -42,13 +37,7 @@ export function NativeComponentsSingleBarcodeScanning() {
               style={styles.container}
               text={'Cancel'}
             />
-            <Button
-              onPress={onSwitchOverlay}
-              style={styles.container}
-              text={'Custom overlay'}
-            />
           </View>
-          {customOverlay && <CustomOverlay />}
         </View>
       </ScanbotBarcodeCameraView>
     </SafeAreaView>
