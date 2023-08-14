@@ -39,7 +39,7 @@ export function HomeScreen() {
       title: 'Barcode Scanning Use Cases',
       data: [
         {
-          title: 'Single Barcode Scanning',
+          title: 'Scan Single Barcodes',
           onPress: onSingleBarcodeScanning,
         },
       ],
@@ -48,7 +48,7 @@ export function HomeScreen() {
       title: 'Native Components Use Cases',
       data: [
         {
-          title: 'Single Barcode Scanning',
+          title: 'Scan Single Barcodes',
           onPress: onNativeComponentBarcodeScanning,
         },
       ],
