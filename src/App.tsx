@@ -9,10 +9,12 @@ import {PrimaryRoutesParamList, Screens} from './types';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
 import {ResultsScreen} from './ResultsScreen';
+import {NativeComponentsSingleBarcodeScanning} from './NativeComponentsSingleBarcodeScanning';
 
 const ScreenTitles: Record<Screens, string> = {
   [Screens.ScannersList]: 'Scanbot Barcode SDK Example',
   [Screens.Results]: 'Results',
+  [Screens.NativeComponentBarcode]: 'Native Component Example',
 };
 
 const Stack = createNativeStackNavigator<PrimaryRoutesParamList>();
@@ -38,6 +40,9 @@ function App() {
               headerTitleAlign: 'center',
               headerBackTitleVisible: false,
               headerTintColor: Colors.white,
+              headerTitleStyle: {
+                fontSize: 18,
+              },
             }}>
             <Stack.Screen
               name={Screens.ScannersList}
@@ -51,6 +56,13 @@ function App() {
               component={ResultsScreen}
               options={{
                 title: ScreenTitles.Results,
+              }}
+            />
+            <Stack.Screen
+              name={Screens.NativeComponentBarcode}
+              component={NativeComponentsSingleBarcodeScanning}
+              options={{
+                title: ScreenTitles.NativeComponentBarcode,
               }}
             />
           </Stack.Navigator>
