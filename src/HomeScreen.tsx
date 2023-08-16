@@ -10,12 +10,17 @@ import {
 } from 'react-native';
 import {SupportSection} from './components';
 import {ScanbotTheme} from './theme';
-import {useMultipleBarcodeScanning, useSingleBarcodeScanning} from './hooks';
+import {
+  useBatchScanning,
+  useMultipleBarcodeScanning,
+  useSingleBarcodeScanning,
+} from './hooks';
 import {Section, SectionData} from './types';
 
 export function HomeScreen() {
   const onSingleBarcodeScanning = useSingleBarcodeScanning();
   const onMultipleBarcodeScanning = useMultipleBarcodeScanning();
+  const onBatchScanning = useBatchScanning();
 
   const sectionListData: Section[] = useMemo(
     () => [
@@ -30,10 +35,14 @@ export function HomeScreen() {
             title: 'Scanning Multiple Barcodes',
             onPress: onMultipleBarcodeScanning,
           },
+          {
+            title: 'Batch Scanning',
+            onPress: onBatchScanning,
+          },
         ],
       },
     ],
-    [onMultipleBarcodeScanning, onSingleBarcodeScanning],
+    [onBatchScanning, onMultipleBarcodeScanning, onSingleBarcodeScanning],
   );
 
   return (
