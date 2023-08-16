@@ -4,15 +4,17 @@ import {PrimaryRouteNavigationProp, Screens} from '../types';
 import {errorMessageAlert, licenseNotValidAlert} from '../utils/alerts';
 import {useNavigation} from '@react-navigation/native';
 
-export function useSingleBarcodeScanner() {
+export function useMultipleBarcodeScanning() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
 
-  const onPress = useCallback(async () => {
+  return useCallback(async () => {
     try {
       const licenseResult = await ScanbotBarcodeSDK.getLicenseInfo();
 
       if (licenseResult.isLicenseValid) {
-        const scanResult = await ScanbotBarcodeSDK.startBarcodeScanner({});
+        const scanResult = await ScanbotBarcodeSDK.startBarcodeScanner({
+          viewFinderEnabled: false,
+        });
         if (scanResult.status === 'OK') {
           navigation.navigate(Screens.Results, scanResult);
         }
@@ -23,6 +25,4 @@ export function useSingleBarcodeScanner() {
       errorMessageAlert(JSON.stringify(error));
     }
   }, [navigation]);
-
-  return {onPress};
 }

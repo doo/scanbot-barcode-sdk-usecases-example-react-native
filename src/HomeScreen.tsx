@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useMemo} from 'react';
 import {
   Pressable,
   SafeAreaView,
@@ -10,50 +10,31 @@ import {
 } from 'react-native';
 import {SupportSection} from './components';
 import {ScanbotTheme} from './theme';
-import {useSingleBarcodeScanner} from './hooks/useSingleBarcodeScanner';
-import {
-  PrimaryRouteNavigationProp,
-  Screens,
-  Section,
-  SectionData,
-} from './types';
-import {useNavigation} from '@react-navigation/native';
-import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
-import {licenseNotValidAlert} from './utils/alerts';
+import {useMultipleBarcodeScanning, useSingleBarcodeScanning} from './hooks';
+import {Section, SectionData} from './types';
 
 export function HomeScreen() {
-  const {onPress: onSingleBarcodeScanning} = useSingleBarcodeScanner();
-  const navigation = useNavigation<PrimaryRouteNavigationProp>();
+  const onSingleBarcodeScanning = useSingleBarcodeScanning();
+  const onMultipleBarcodeScanning = useMultipleBarcodeScanning();
 
-  const onNativeComponentBarcodeScanning = useCallback(async () => {
-    const licenseInfo = await ScanbotBarcodeSDK.getLicenseInfo();
-    if (licenseInfo.isLicenseValid) {
-      navigation.navigate(Screens.NativeComponentBarcode);
-    } else {
-      licenseNotValidAlert();
-    }
-  }, [navigation]);
-
-  const sectionListData: Section[] = [
-    {
-      title: 'Barcode Scanning Use Cases',
-      data: [
-        {
-          title: 'Scan Single Barcodes',
-          onPress: onSingleBarcodeScanning,
-        },
-      ],
-    },
-    {
-      title: 'Native Components Use Cases',
-      data: [
-        {
-          title: 'Scan Single Barcodes',
-          onPress: onNativeComponentBarcodeScanning,
-        },
-      ],
-    },
-  ];
+  const sectionListData: Section[] = useMemo(
+    () => [
+      {
+        title: 'Barcode Scanning Use Cases',
+        data: [
+          {
+            title: 'Scan Single Barcodes',
+            onPress: onSingleBarcodeScanning,
+          },
+          {
+            title: 'Scanning Multiple Barcodes',
+            onPress: onMultipleBarcodeScanning,
+          },
+        ],
+      },
+    ],
+    [onMultipleBarcodeScanning, onSingleBarcodeScanning],
+  );
 
   return (
     <SafeAreaView style={styles.container}>
