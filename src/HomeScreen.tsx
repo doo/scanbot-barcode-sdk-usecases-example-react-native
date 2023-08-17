@@ -12,6 +12,7 @@ import {SupportSection} from './components';
 import {ScanbotTheme} from './theme';
 import {
   useBatchScanning,
+  useDetectBarcodeOnImage,
   useMultipleBarcodeScanning,
   useSingleBarcodeScanning,
 } from './hooks';
@@ -21,6 +22,7 @@ export function HomeScreen() {
   const onSingleBarcodeScanning = useSingleBarcodeScanning();
   const onMultipleBarcodeScanning = useMultipleBarcodeScanning();
   const onBatchScanning = useBatchScanning();
+  const onDetectBarcodeFromImage = useDetectBarcodeOnImage();
 
   const sectionListData: Section[] = useMemo(
     () => [
@@ -39,10 +41,19 @@ export function HomeScreen() {
             title: 'Batch Scanning',
             onPress: onBatchScanning,
           },
+          {
+            title: 'Detect Barcode On Image',
+            onPress: onDetectBarcodeFromImage,
+          },
         ],
       },
     ],
-    [onBatchScanning, onMultipleBarcodeScanning, onSingleBarcodeScanning],
+    [
+      onBatchScanning,
+      onDetectBarcodeFromImage,
+      onMultipleBarcodeScanning,
+      onSingleBarcodeScanning,
+    ],
   );
 
   return (
@@ -94,20 +105,20 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   listHeader: {
-    fontSize: 18,
+    fontSize: 22,
     fontWeight: 'bold',
     letterSpacing: 0.8,
     paddingVertical: 12,
   },
   listItemContainer: {
-    marginVertical: 4,
+    marginVertical: 8,
     paddingVertical: 2,
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
   },
   listItemText: {
-    fontSize: 16,
+    fontSize: 18,
     flexShrink: 1,
   },
   listItemIcon: {

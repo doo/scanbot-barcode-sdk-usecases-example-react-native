@@ -39,6 +39,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>For Barcode Scanning</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>For selecting an image from photo library</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UILaunchStoryboardName</key>
