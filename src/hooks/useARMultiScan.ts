@@ -3,8 +3,9 @@ import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
 import {PrimaryRouteNavigationProp, Screens} from '../types';
 import {errorMessageAlert, licenseNotValidAlert} from '../utils/alerts';
 import {useNavigation} from '@react-navigation/native';
+import {ScanbotTheme} from '../theme';
 
-export function useMultipleBarcodeScanning() {
+export function useARMultiScan() {
   const navigation = useNavigation<PrimaryRouteNavigationProp>();
 
   return useCallback(async () => {
@@ -12,9 +13,15 @@ export function useMultipleBarcodeScanning() {
       const licenseResult = await ScanbotBarcodeSDK.getLicenseInfo();
 
       if (licenseResult.isLicenseValid) {
-        const scanResult = await ScanbotBarcodeSDK.startBarcodeScanner({
-          viewFinderEnabled: false,
+        const scanResult = await ScanbotBarcodeSDK.startBatchBarcodeScanner({
           codeDensity: 'HIGH',
+          overlayConfiguration: {
+            overlayEnabled: true,
+            automaticSelectionEnabled: true,
+            polygonColor: ScanbotTheme.colors.primary,
+            textColor: ScanbotTheme.colors.text,
+            textContainerColor: ScanbotTheme.colors.primary,
+          },
         });
         if (scanResult.status === 'OK') {
           navigation.navigate(Screens.Results, scanResult);

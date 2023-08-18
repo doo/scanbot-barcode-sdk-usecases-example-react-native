@@ -11,6 +11,7 @@ import {
 import {SupportSection} from './components';
 import {ScanbotTheme} from './theme';
 import {
+  useARMultiScan,
   useBatchScanning,
   useDetectBarcodeOnImage,
   useMultipleBarcodeScanning,
@@ -23,6 +24,7 @@ export function HomeScreen() {
   const onMultipleBarcodeScanning = useMultipleBarcodeScanning();
   const onBatchScanning = useBatchScanning();
   const onDetectBarcodeFromImage = useDetectBarcodeOnImage();
+  const onARMultiScan = useARMultiScan();
 
   const sectionListData: Section[] = useMemo(
     () => [
@@ -47,8 +49,18 @@ export function HomeScreen() {
           },
         ],
       },
+      {
+        title: 'Barcode AR Overlay Use Cases',
+        data: [
+          {
+            title: 'AR-MultiScan',
+            onPress: onARMultiScan,
+          },
+        ],
+      },
     ],
     [
+      onARMultiScan,
       onBatchScanning,
       onDetectBarcodeFromImage,
       onMultipleBarcodeScanning,
