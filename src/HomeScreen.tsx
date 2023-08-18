@@ -12,6 +12,7 @@ import {SupportSection} from './components';
 import {ScanbotTheme} from './theme';
 import {
   useARMultiScan,
+  useARSelectScan,
   useBatchScanning,
   useDetectBarcodeOnImage,
   useMultipleBarcodeScanning,
@@ -25,6 +26,7 @@ export function HomeScreen() {
   const onBatchScanning = useBatchScanning();
   const onDetectBarcodeFromImage = useDetectBarcodeOnImage();
   const onARMultiScan = useARMultiScan();
+  const onARSelectScan = useARSelectScan();
 
   const sectionListData: Section[] = useMemo(
     () => [
@@ -56,11 +58,16 @@ export function HomeScreen() {
             title: 'AR-MultiScan',
             onPress: onARMultiScan,
           },
+          {
+            title: 'AR-SelectScan',
+            onPress: onARSelectScan,
+          },
         ],
       },
     ],
     [
       onARMultiScan,
+      onARSelectScan,
       onBatchScanning,
       onDetectBarcodeFromImage,
       onMultipleBarcodeScanning,
