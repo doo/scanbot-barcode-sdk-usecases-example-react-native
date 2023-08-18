@@ -14,6 +14,7 @@ export function useMultipleBarcodeScanning() {
       if (licenseResult.isLicenseValid) {
         const scanResult = await ScanbotBarcodeSDK.startBarcodeScanner({
           viewFinderEnabled: false,
+          finderTextHint: '',
           codeDensity: 'HIGH',
         });
         if (scanResult.status === 'OK') {
