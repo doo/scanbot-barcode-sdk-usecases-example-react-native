@@ -17,6 +17,7 @@ import {
   useDetectBarcodeOnImage,
   useMultipleBarcodeScanning,
   useSingleBarcodeScanning,
+  useTinyBarcodeScanning,
 } from './hooks';
 import {Section, SectionData} from './types';
 
@@ -24,6 +25,7 @@ export function HomeScreen() {
   const onSingleBarcodeScanning = useSingleBarcodeScanning();
   const onMultipleBarcodeScanning = useMultipleBarcodeScanning();
   const onBatchScanning = useBatchScanning();
+  const onTinyBarcodeScanning = useTinyBarcodeScanning();
   const onDetectBarcodeFromImage = useDetectBarcodeOnImage();
   const onARMultiScan = useARMultiScan();
   const onARSelectScan = useARSelectScan();
@@ -44,6 +46,10 @@ export function HomeScreen() {
           {
             title: 'Batch Scanning',
             onPress: onBatchScanning,
+          },
+          {
+            title: 'Scanning Tiny Barcodes',
+            onPress: onTinyBarcodeScanning,
           },
           {
             title: 'Detect Barcode On Image',
@@ -72,6 +78,7 @@ export function HomeScreen() {
       onDetectBarcodeFromImage,
       onMultipleBarcodeScanning,
       onSingleBarcodeScanning,
+      onTinyBarcodeScanning,
     ],
   );
 
