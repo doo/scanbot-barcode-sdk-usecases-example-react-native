@@ -489,7 +489,7 @@ PODS:
     - React-jsi (= 0.72.3)
     - React-logger (= 0.72.3)
     - React-perflogger (= 0.72.3)
-  - RNScanbotBarcodeSDK (3.7.0-beta.1):
+  - RNScanbotBarcodeSDK (3.7.0-beta.2):
     - React
     - ScanbotBarcodeScannerSDK (= 3.7.0)
   - RNScreens (3.22.1):
@@ -730,7 +730,7 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 837c1bebd2f84572db17698cd702ceaf585b0d9a
   React-utils: bcb57da67eec2711f8b353f6e3d33bd8e4b2efa3
   ReactCommon: 3ccb8fb14e6b3277e38c73b0ff5e4a1b8db017a9
-  RNScanbotBarcodeSDK: b348ce632ccf6f9324104ee5d4633b1c90db56c8
+  RNScanbotBarcodeSDK: 1672dfd66154fe23aa7a4fd583ee139eafb22255
   RNScreens: 50ffe2fa2342eabb2d0afbe19f7c1af286bc7fb3
   ScanbotBarcodeScannerSDK: a2d6930f2802cf2d43e72c7eee552b014503bae3
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
