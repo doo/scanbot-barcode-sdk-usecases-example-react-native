@@ -40,6 +40,7 @@ function App() {
               headerTitleStyle: {
                 fontSize: 18,
               },
+              animation: 'none',
             }}>
             <Stack.Screen
               name={Screens.ScannersList}
