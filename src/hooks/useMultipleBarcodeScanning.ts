@@ -12,7 +12,7 @@ export function useMultipleBarcodeScanning() {
       const licenseResult = await ScanbotBarcodeSDK.getLicenseInfo();
 
       if (licenseResult.isLicenseValid) {
-        const scanResult = await ScanbotBarcodeSDK.startBarcodeScanner({
+        const scanResult = await ScanbotBarcodeSDK.startBatchBarcodeScanner({
           viewFinderEnabled: false,
           finderTextHint: '',
           codeDensity: 'HIGH',
