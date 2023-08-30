@@ -13,7 +13,7 @@ export function useARSelectScan() {
       const licenseResult = await ScanbotBarcodeSDK.getLicenseInfo();
 
       if (licenseResult.isLicenseValid) {
-        const scanResult = await ScanbotBarcodeSDK.startBarcodeScanner({
+        const scanResult = await ScanbotBarcodeSDK.startBatchBarcodeScanner({
           codeDensity: 'HIGH',
           viewFinderEnabled: false,
           finderTextHint: '',

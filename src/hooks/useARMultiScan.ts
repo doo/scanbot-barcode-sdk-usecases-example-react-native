@@ -15,6 +15,8 @@ export function useARMultiScan() {
       if (licenseResult.isLicenseValid) {
         const scanResult = await ScanbotBarcodeSDK.startBatchBarcodeScanner({
           codeDensity: 'HIGH',
+          viewFinderEnabled: false,
+          finderTextHint: '',
           overlayConfiguration: {
             overlayEnabled: true,
             automaticSelectionEnabled: true,
