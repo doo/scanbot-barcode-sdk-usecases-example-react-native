@@ -35,7 +35,6 @@ function App() {
         <NavigationContainer theme={ScanbotTheme}>
           <Stack.Navigator
             screenOptions={{
-              headerTitleAlign: 'center',
               headerBackTitleVisible: false,
               headerTintColor: Colors.white,
               headerTitleStyle: {
