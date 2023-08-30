@@ -127,8 +127,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   listFooter: {
-    flex: 1,
-    justifyContent: 'flex-end',
+    marginTop: 22,
   },
   listHeader: {
     fontSize: 22,
