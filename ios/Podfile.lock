@@ -489,6 +489,8 @@ PODS:
     - React-jsi (= 0.72.3)
     - React-logger (= 0.72.3)
     - React-perflogger (= 0.72.3)
+  - RNGestureHandler (2.12.1):
+    - React-Core
   - RNScanbotBarcodeSDK (3.7.0-beta.2):
     - React
     - ScanbotBarcodeScannerSDK (= 3.7.0)
@@ -566,6 +568,7 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNScanbotBarcodeSDK (from `../node_modules/react-native-scanbot-barcode-scanner-sdk`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -670,6 +673,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/utils"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   RNScanbotBarcodeSDK:
     :path: "../node_modules/react-native-scanbot-barcode-scanner-sdk"
   RNScreens:
@@ -730,6 +735,7 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 837c1bebd2f84572db17698cd702ceaf585b0d9a
   React-utils: bcb57da67eec2711f8b353f6e3d33bd8e4b2efa3
   ReactCommon: 3ccb8fb14e6b3277e38c73b0ff5e4a1b8db017a9
+  RNGestureHandler: c0d04458598fcb26052494ae23dda8f8f5162b13
   RNScanbotBarcodeSDK: 1672dfd66154fe23aa7a4fd583ee139eafb22255
   RNScreens: 50ffe2fa2342eabb2d0afbe19f7c1af286bc7fb3
   ScanbotBarcodeScannerSDK: a2d6930f2802cf2d43e72c7eee552b014503bae3
