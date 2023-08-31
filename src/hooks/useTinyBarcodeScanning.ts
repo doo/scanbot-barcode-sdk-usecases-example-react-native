@@ -14,6 +14,7 @@ export function useTinyBarcodeScanning() {
       if (licenseResult.isLicenseValid) {
         const scanResult = await ScanbotBarcodeSDK.startBarcodeScanner({
           minFocusDistanceLock: true,
+          focusLockEnabled: true,
           viewFinderEnabled: true,
         });
         if (scanResult.status === 'OK') {
