@@ -22,6 +22,7 @@ function App() {
     ScanbotBarcodeSDK.initializeSdk({
       licenseKey: '',
       loggingEnabled: true,
+      useCameraX: true,
     });
   }, []);
 
