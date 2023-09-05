@@ -76,5 +76,5 @@ For more details please refer to the SDK documentation.
 ###### Still at a loss? It is probably a cache issue
 
 * `npm cache clean --force`
-* Restart metro server! (Yes, apparently that thing has its own cache as well)
+* Restart metro server
 
