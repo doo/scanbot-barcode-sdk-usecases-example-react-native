@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
   },
   resultsList: {
     paddingVertical: 10,
-    marginHorizontal: 20,
     marginVertical: 12,
   },
   barcodeType: {

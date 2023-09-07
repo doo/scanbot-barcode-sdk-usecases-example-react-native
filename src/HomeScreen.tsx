@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useMemo} from 'react';
 import {
   Pressable,
   SafeAreaView,
@@ -10,50 +10,77 @@ import {
 } from 'react-native';
 import {SupportSection} from './components';
 import {ScanbotTheme} from './theme';
-import {useSingleBarcodeScanner} from './hooks/useSingleBarcodeScanner';
 import {
-  PrimaryRouteNavigationProp,
-  Screens,
-  Section,
-  SectionData,
-} from './types';
-import {useNavigation} from '@react-navigation/native';
-import ScanbotBarcodeSDK from 'react-native-scanbot-barcode-scanner-sdk';
-import {licenseNotValidAlert} from './utils/alerts';
+  useARMultiScan,
+  useARSelectScan,
+  useBatchScanning,
+  useDetectBarcodeOnImage,
+  useMultipleBarcodeScanning,
+  useSingleBarcodeScanning,
+  useTinyBarcodeScanning,
+} from './hooks';
+import {Section, SectionData} from './types';
 
 export function HomeScreen() {
-  const {onPress: onSingleBarcodeScanning} = useSingleBarcodeScanner();
-  const navigation = useNavigation<PrimaryRouteNavigationProp>();
+  const onSingleBarcodeScanning = useSingleBarcodeScanning();
+  const onMultipleBarcodeScanning = useMultipleBarcodeScanning();
+  const onBatchScanning = useBatchScanning();
+  const onTinyBarcodeScanning = useTinyBarcodeScanning();
+  const onDetectBarcodeFromImage = useDetectBarcodeOnImage();
+  const onARMultiScan = useARMultiScan();
+  const onARSelectScan = useARSelectScan();
 
-  const onNativeComponentBarcodeScanning = useCallback(async () => {
-    const licenseInfo = await ScanbotBarcodeSDK.getLicenseInfo();
-    if (licenseInfo.isLicenseValid) {
-      navigation.navigate(Screens.NativeComponentBarcode);
-    } else {
-      licenseNotValidAlert();
-    }
-  }, [navigation]);
-
-  const sectionListData: Section[] = [
-    {
-      title: 'Barcode Scanning Use Cases',
-      data: [
-        {
-          title: 'Scan Single Barcodes',
-          onPress: onSingleBarcodeScanning,
-        },
-      ],
-    },
-    {
-      title: 'Native Components Use Cases',
-      data: [
-        {
-          title: 'Scan Single Barcodes',
-          onPress: onNativeComponentBarcodeScanning,
-        },
-      ],
-    },
-  ];
+  const sectionListData: Section[] = useMemo(
+    () => [
+      {
+        title: 'Barcode Scanning Use Cases',
+        data: [
+          {
+            title: 'Scan Single Barcodes',
+            onPress: onSingleBarcodeScanning,
+          },
+          {
+            title: 'Scanning Multiple Barcodes',
+            onPress: onMultipleBarcodeScanning,
+          },
+          {
+            title: 'Batch Scanning',
+            onPress: onBatchScanning,
+          },
+          {
+            title: 'Scanning Tiny Barcodes',
+            onPress: onTinyBarcodeScanning,
+          },
+          {
+            title: 'Detect Barcode On Image',
+            onPress: onDetectBarcodeFromImage,
+          },
+        ],
+      },
+      {
+        title: 'Barcode AR Overlay Use Cases',
+        data: [
+          {
+            title: 'AR-MultiScan',
+            onPress: onARMultiScan,
+          },
+          {
+            title: 'AR-SelectScan',
+            onPress: onARSelectScan,
+          },
+        ],
+      },
+    ],
+    [
+      onARMultiScan,
+      onARSelectScan,
+      onBatchScanning,
+      onDetectBarcodeFromImage,
+      onMultipleBarcodeScanning,
+      onSingleBarcodeScanning,
+      onTinyBarcodeScanning,
+    ],
+  );
 
   return (
     <SafeAreaView style={styles.container}>
@@ -100,24 +127,23 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   listFooter: {
-    flex: 1,
-    justifyContent: 'flex-end',
+    marginTop: 22,
   },
   listHeader: {
-    fontSize: 18,
+    fontSize: 22,
     fontWeight: 'bold',
     letterSpacing: 0.8,
     paddingVertical: 12,
   },
   listItemContainer: {
-    marginVertical: 4,
+    marginVertical: 8,
     paddingVertical: 2,
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
   },
   listItemText: {
-    fontSize: 16,
+    fontSize: 18,
     flexShrink: 1,
   },
   listItemIcon: {

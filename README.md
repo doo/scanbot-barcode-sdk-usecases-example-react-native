@@ -49,3 +49,32 @@ For more details please refer to the SDK documentation.
 
 👉 [Scanbot Barcode Scanner SDK documentation](https://docs.scanbot.io/barcode-scanner-sdk/react-native/introduction/)
 
+## How to run this app
+
+* `npm install`
+* `cd ios && pod install`
+* `react-native run-ios --device` or `react-native run-android`
+
+- Open the **workspace** file `ScanbotBarcodeExampleReact.xcworkspace` (not .xcodeproj) from the `ios` directory in Xcode.
+- Adjust *Provisioning* and *Signing* settings.
+- And run the app in Xcode or via `react-native run-ios`.
+
+## Requirements
+
+### Built using
+
+* `react-native-cli` `latest`
+* `node` v16.19.0
+* `npm` v8.19.3
+
+### What else can go wrong?
+
+###### Pod not found
+
+`pod repo update`
+
+###### Still at a loss? It is probably a cache issue
+
+* `npm cache clean --force`
+* Restart metro server
+
