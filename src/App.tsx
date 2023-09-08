@@ -17,10 +17,20 @@ const ScreenTitles: Record<Screens, string> = {
 
 const Stack = createNativeStackNavigator<PrimaryRoutesParamList>();
 
+/**
+ * TODO Add the Scanbot Barcode Scanner SDK license key here.
+ * Please note: Scanbot Barcode Scanner SDK will run without a license key for one minute per session!
+ * After the trial period has expired all SDK features and UI components will stop working.
+ * You can get a free "no-strings-attached" trial license key. Please submit the trial license
+ * form (https://scanbot.io/trial) on our website by using the app identifier
+ * "io.scanbot.example.barcode.usecases.reactnative" of this example app.
+ */
+const LICENSE_KEY = '';
+
 function App() {
   useEffect(() => {
     ScanbotBarcodeSDK.initializeSdk({
-      licenseKey: '',
+      licenseKey: LICENSE_KEY,
       loggingEnabled: true,
       useCameraX: true,
     });

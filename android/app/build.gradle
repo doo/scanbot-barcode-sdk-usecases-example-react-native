@@ -75,7 +75,7 @@ android {
 
     namespace "io.scanbot.barcode.example.reactnative"
     defaultConfig {
-        applicationId "io.scanbot.barcode.example.reactnative"
+        applicationId "io.scanbot.example.barcode.usecases.reactnative"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
